@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction</title>
+    <style>
+        body {
+            background: radial-gradient(circle at center, #FF0000, #000000);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            color: #555;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Wine Quality Prediction</h2><br><br>
+        <form action="/predict" method="post">
+            <div>
+                <label>Volatile Acidity : </label>
+                <input type="number" step="any" name="volatile acidity" required><br><br>
+            </div>
+
+            <div>
+                <label>Chlorides : </label>
+                <input type="number" step="0.01" name="chlorides" required><br><br>
+            </div>
+
+            <div>
+                <label>Total Sulphure Dioxide : </label>
+                <input type="number" name="total sulfur dioxide" required><br><br>
+            </div>
+
+            <div>
+                <label>Density : </label>
+                <input type="number" step="any" name="density" required><br><br>
+            </div>
+
+            <div>
+                <label>Sulphates : </label>
+                <input type="number" step="any" name="sulphates" required><br><br>
+            </div>
+
+            <div>
+                <label>Alcohol : </label>
+                <input type="number" step="any" name="alcohol" required><br><br>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div>
+            <h4>Wine Quality : {{ prediction }}</h4>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
